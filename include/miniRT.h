@@ -3,6 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#enclude <stddef.h>
+#include <stddef.h>
 
 #endif
