@@ -65,7 +65,7 @@ $(NAME):	$(OBJ)
 		#@echo "$(CURSOR_DOWN)"
 		-@make -C $(LIBFT_DIR)
 		@echo "$(CURSOR_UP_1)$(BOLD)$(VIOLET)COMPILER: $(GREEN)$(SELECTED)LIBFT DONE!$(END)⚙️                                                    "
-		-@$(CC) $(OBJ) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+		-@$(CC) $(OBJ) -L. $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 		@sleep 1
 		@echo "$(CURSOR_UP_1)$(CURSOR_DOWN)$(BOLD)$(RED)$(SELECTED)\nExecutable miniRT has descended upon the world...$(END)                     "
 

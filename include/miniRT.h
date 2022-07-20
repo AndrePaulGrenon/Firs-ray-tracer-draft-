@@ -1,10 +1,13 @@
 #ifndef MINI_RT_H
 #define MINI_RT_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stddef.h>
-#include <mlx.h>
+# include "../libft/include/libft.h"
+
+# include <stdio.h>
+# include <stdlib.h>
+# include <stddef.h>
+# include <mlx.h>
+
 
 #define COLOR "0123456789ABCDEF"
 
