@@ -15,13 +15,13 @@ LIBFT_DIR	= libft/
 LIBFT		= $(addprefix $(LIBFT_DIR), $(LIBFT_A))
 
 #MinniLibx
-MLX_A		= libmlx.a
-MLX_DIR		= mlx/
-MLX			= $(addprefix $(MLX_DIR), $(MLX_A))
-MLX_FLAGS	= -Lmlx -lmlx -framework OpenGL -framework AppKit 
+#MLX_A		= libmlx.a
+#MLX_DIR		= mlx/
+#MLX			= $(addprefix $(MLX_DIR), $(MLX_A))
+MLX_FLAGS	= -lmlx -framework OpenGL -framework AppKit 
 
 #Sources Files
-SRC_FILES =	miniRT\
+SRC_FILES =	miniRT ft_pixel_put\
 
 #SRC
 SRC		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
@@ -60,30 +60,30 @@ all	: $(NAME)
 $(NAME):	$(OBJ)	
 	@echo "$(BOLD)$(VIOLET)$(CURSOR_UP_1)                                                                    $(CURSOR_DOWN)\n\nCOMPILER: $(GREEN)$(SELECTED)SOURCES DONE!$(END) 💎                            \n"
 	@echo "$(BOLD)$(WHITE)\n-------LIBRARIES------                      \n$(CURSOR_DOWN)                                        $(END) "
-		-@make -C $(MLX_DIR)
+		#-@make -C $(MLX_DIR)
 		@echo "$(CURSOR_UP)$(BOLD)$(VIOLET)COMPILER: $(GREEN)$(SELECTED)MLX DONE!$(END)🕹                                                     "
 		#@echo "$(CURSOR_DOWN)"
 		-@make -C $(LIBFT_DIR)
 		@echo "$(CURSOR_UP_1)$(BOLD)$(VIOLET)COMPILER: $(GREEN)$(SELECTED)LIBFT DONE!$(END)⚙️                                                    "
-		-@$(CC) $(OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
+		-@$(CC) $(OBJ) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 		@sleep 1
 		@echo "$(CURSOR_UP_1)$(CURSOR_DOWN)$(BOLD)$(RED)$(SELECTED)\nExecutable miniRT has descended upon the world...$(END)                     "
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
 	@echo "$(RED)$(BOLD)$(CURSOR_UP)Compiling...$(GREEN) $< ..$(END)            "
-			-@$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+			-@$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -Imlx -c $< -o $@
 
 $(OBJF)	:
 			@mkdir -p $(OBJ_DIR)
 
 clean	:
 			@$(RM) -r $(OBJ_DIR)
-			@make -C $(MLX_DIR) clean
+#			@make -C $(MLX_DIR) clean
 			@make -C $(LIBFT_DIR) clean
 			@$(RM) $(OBJF)
 
 fclean	:	clean
-			@$(RM) $(NAME)
+			@$(RM) $(NAME) $(LIBFT)
 
 val:
 		valgrind   --leak-check=full --track-origins=yes --show-leak-kinds=all --track-fds=yes --trace-children=yes ./$(NAME)
