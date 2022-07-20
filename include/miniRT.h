@@ -17,5 +17,6 @@ typedef struct	s_data {
 }				t_data;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	ft_gradient(int w, int h, int style, t_data *img);
 
 #endif
