@@ -21,8 +21,8 @@ LIBFT		= $(addprefix $(LIBFT_DIR), $(LIBFT_A))
 MLX_FLAGS	= -lmlx -framework OpenGL -framework AppKit 
 
 #Sources Files
-SRC_FILES =	miniRT ft_pixel_put\
-
+SRC_FILES =	miniRT ft_pixel_put ft_vector ft_vector2\
+			ft_vector3 ft_vector4 ft_ray ft_action ft_equation\
 #SRC
 SRC		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
