@@ -36,16 +36,18 @@ typedef struct	s_ray
 
 typedef struct	s_shape
 {
-	t_vec	pos;
-	double	r;
+	t_vec			pos;
+	char			type;
+	unsigned char	trgb[4];
+	double			i;
+	double			r;
 }				t_shape;
 
 typedef struct	s_inter
 {
-	bool	intersected;
-	t_ray	ray;
-	t_vec	hit;
-	t_shape	object;
+	bool	hit;;
+	t_vec	point;
+	t_vec	n;
 }				t_inter;
 
 typedef struct	s_data 
@@ -57,6 +59,7 @@ typedef struct	s_data
 	int		endian;
 
 	t_shape	sphere;
+	t_shape	ligth;
 	int		h;
 	int		w;
 }				t_data;
@@ -89,6 +92,10 @@ void	loop_ray(t_data *img, int h, int w);
 void	ft_init_ray(t_ray *ray, t_vec pos, t_vec direction);
 
 //Touch Equation
-bool	sphere_touch(t_ray ray, t_shape sphere);
+t_inter	sphere_touch(t_ray ray, t_shape sphere);
+
+//Colours
+int	ft_shading(t_inter inter, t_shape sphere, t_shape light);
+int	create_trgb(int t, int r, int g, int b);
 
 #endif

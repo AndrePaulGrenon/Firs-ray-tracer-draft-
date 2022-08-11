@@ -1,0 +1,31 @@
+#include "miniRT.h"
+
+double	ft_intensity(t_inter inter, t_shape light)
+{
+	t_vec	to_light;
+	double	intensity;
+
+	to_light = subs(light.pos, inter.point);
+	to_light.len = length(length2(to_light));
+	to_light = normalized(to_light);
+	intensity = (light.i * (dot(to_light, inter.n)))/(to_light.len * to_light.len);
+	return (intensity);
+}
+
+int	ft_shading(t_inter inter, t_shape sphere, t_shape light)
+{
+	unsigned char trgb[4];
+	double	intensity;
+
+	intensity = ft_intensity(inter, light);
+	if (intensity < 0)
+		intensity = 0;
+	else if (intensity > 1)
+		intensity = 1;
+	printf("intensity: %f\n", intensity);
+	trgb[0] = 0;
+	trgb[1] = (char) (sphere.trgb[1] * intensity);
+	trgb[2] = (char) (sphere.trgb[2] * intensity);
+	trgb[3] = (char) (sphere.trgb[3] * intensity);
+	return (create_trgb(trgb[0], trgb[1], trgb[2], trgb[3]));
+}

@@ -14,8 +14,14 @@ int	main(int argc, char **argv)
 	img.img = mlx_new_image(mlx, 1080, 1080);
 	img.h = 1080;
 	img.w = 1080;
-	img.sphere.pos = vector_c(-148,-29, -155);
-	img.sphere.r = 30;
+	img.sphere.pos = vector_c(0, 0, -75);
+	img.sphere.r = 40;
+	img.sphere.trgb[0] = 0;
+	img.sphere.trgb[1] = 125;
+	img.sphere.trgb[2] = 0;
+	img.sphere.trgb[3] = 255;
+	img.ligth.pos = vector_c(-50, -95, -30);
+	img.ligth.i = 1;
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	loop_ray(&img, 1080, 1080);
 	/*if (argc == 1)
