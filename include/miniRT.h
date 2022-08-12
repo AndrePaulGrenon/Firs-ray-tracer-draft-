@@ -10,9 +10,10 @@
 # include <math.h>
 # include <stdbool.h>
 
-#define COLOR "0123456789ABCDEF"
-#define RAY_T_MIN 0.0001f
-#define RAY_T_MAX 1.0e30f
+# define COLOR "0123456789ABCDEF"
+# define RAY_T_MIN 0.0001f
+# define RAY_T_MAX 1.0e30f
+# define AMBIENT 0.7f
 //#define M_PI 3.14159265359 
 
 typedef struct s_vec
@@ -64,8 +65,13 @@ typedef struct	s_data
 	int		w;
 }				t_data;
 
+//MLX operations and color tests
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	ft_gradient(int w, int h, int style, t_data *img);
+
+//Number operation
+double min(double num1, double num2);
+double max(double num1, double num2);
 
 //Vector operations Simple
 t_vec	vector_c(double x, double y, double z);

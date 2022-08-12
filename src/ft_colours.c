@@ -16,16 +16,21 @@ int	ft_shading(t_inter inter, t_shape sphere, t_shape light)
 {
 	unsigned char trgb[4];
 	double	intensity;
+	double	reste;
 
-	intensity = ft_intensity(inter, light);
+	reste = 0;
+	intensity = ft_intensity(inter, light) + AMBIENT;
 	if (intensity < 0)
 		intensity = 0;
 	else if (intensity > 1)
+	{
+		reste = (intensity - 1) * (intensity - 1) * 255;
 		intensity = 1;
+	}
 	printf("intensity: %f\n", intensity);
 	trgb[0] = 0;
-	trgb[1] = (char) (sphere.trgb[1] * intensity);
-	trgb[2] = (char) (sphere.trgb[2] * intensity);
-	trgb[3] = (char) (sphere.trgb[3] * intensity);
+	trgb[1] = (char) min(255, ((reste + sphere.trgb[1]) * intensity));
+	trgb[2] = (char) min(255, ((reste + sphere.trgb[2]) * intensity));
+	trgb[3] = (char) min(255, ((reste + sphere.trgb[3]) * intensity));
 	return (create_trgb(trgb[0], trgb[1], trgb[2], trgb[3]));
 }
