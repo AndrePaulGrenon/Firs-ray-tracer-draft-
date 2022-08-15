@@ -13,8 +13,15 @@
 # define COLOR "0123456789ABCDEF"
 # define RAY_T_MIN 0.0001f
 # define RAY_T_MAX 1.0e30f
-# define AMBIENT 0.7f
+# define AMBIENT 0.45
 //#define M_PI 3.14159265359 
+
+enum 
+{
+	LIGHT,
+	PLANE,
+	SPHERE,
+};
 
 typedef struct s_vec
 {
@@ -39,9 +46,11 @@ typedef struct	s_shape
 {
 	t_vec			pos;
 	char			type;
+	t_vec			n;
 	unsigned char	trgb[4];
 	double			i;
 	double			r;
+	struct s_shape	*next;
 }				t_shape;
 
 typedef struct	s_inter
@@ -49,7 +58,10 @@ typedef struct	s_inter
 	bool	hit;;
 	t_vec	point;
 	t_vec	n;
+	t_shape	object;
 }				t_inter;
+
+
 
 typedef struct	s_data 
 {
@@ -60,10 +72,18 @@ typedef struct	s_data
 	int		endian;
 
 	t_shape	sphere;
+	t_shape	plane;
 	t_shape	ligth;
 	int		h;
 	int		w;
 }				t_data;
+
+typedef struct s_scene
+{
+	t_shape	*lst;
+
+
+}
 
 //MLX operations and color tests
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -99,6 +119,7 @@ void	ft_init_ray(t_ray *ray, t_vec pos, t_vec direction);
 
 //Touch Equation
 t_inter	sphere_touch(t_ray ray, t_shape sphere);
+t_inter	plane_touch(t_ray ray, t_shape plane);
 
 //Colours
 int	ft_shading(t_inter inter, t_shape sphere, t_shape light);
