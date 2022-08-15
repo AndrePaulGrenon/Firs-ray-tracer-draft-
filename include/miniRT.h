@@ -78,12 +78,10 @@ typedef struct	s_data
 	int		w;
 }				t_data;
 
-typedef struct s_scene
+typedef struct	s_scene
 {
 	t_shape	*lst;
-
-
-}
+}				t_scene;
 
 //MLX operations and color tests
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
