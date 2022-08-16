@@ -13,7 +13,7 @@
 # define COLOR "0123456789ABCDEF"
 # define RAY_T_MIN 0.0001f
 # define RAY_T_MAX 1.0e30f
-# define AMBIENT 0.45
+# define AMBIENT 0.2
 //#define M_PI 3.14159265359 
 
 enum 
