@@ -61,8 +61,6 @@ typedef struct	s_inter
 	t_shape	object;
 }				t_inter;
 
-
-
 typedef struct	s_data 
 {
 	void	*img;
@@ -118,6 +116,7 @@ void	ft_init_ray(t_ray *ray, t_vec pos, t_vec direction);
 //Touch Equation
 t_inter	sphere_touch(t_ray ray, t_shape sphere);
 t_inter	plane_touch(t_ray ray, t_shape plane);
+t_inter	cylindre_touch(t_ray ray, t_shape cylindre);
 
 //Colours
 int	ft_shading(t_inter inter, t_shape sphere, t_shape light);

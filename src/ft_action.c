@@ -12,11 +12,18 @@ int		color(t_data *img, int i, int j)
 	dir.len = length(length2(dir));
 	dir = normalized(dir);
 	ft_init_ray(&ray, zero_v(), dir);
-	inter = sphere_touch(ray, img->sphere);
-	if (inter.hit == false)
+
+	inter = cylindre_touch(ray, img->sphere);
+	if (inter.hit)
+		return (0x00FFFFFF);
+//	inter = sphere_touch(ray, img->sphere);
+	
+
+	/*if (inter.hit == false)
 		inter = plane_touch(ray, img->plane);
 	if (inter.hit)
 		return (ft_shading(inter, inter.object, img->ligth));
+		*/
 	return (0x000000);
 }
 
