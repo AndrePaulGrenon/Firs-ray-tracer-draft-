@@ -1,7 +1,5 @@
 #include "miniRT.h"
 
-
-
 double	ft_intensity(t_inter inter, t_shape sphere, t_shape light)
 {
 	t_vec	to_light;

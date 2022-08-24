@@ -24,7 +24,7 @@ MLX_FLAGS	= -lmlx -framework OpenGL -framework AppKit
 SRC_FILES =	miniRT ft_pixel_put ft_vector ft_vector2\
 			ft_vector3 ft_vector4 ft_ray ft_action ft_equation\
 			ft_colours ft_bitshift ft_utils ft_cylindre\
-
+			the_matrix \
 #SRC
 SRC		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -68,7 +68,7 @@ $(NAME):	$(OBJ)
 		-@make -C $(LIBFT_DIR)
 		@echo "$(CURSOR_UP_1)$(BOLD)$(VIOLET)COMPILER: $(GREEN)$(SELECTED)LIBFT DONE!$(END)⚙️                                                    "
 		-@$(CC) $(OBJ) -L. $(LIBFT) $(MLX_FLAGS) -o $(NAME)
-		@sleep 1
+#		@sleep 1
 		@echo "$(CURSOR_UP_1)$(CURSOR_DOWN)$(BOLD)$(RED)$(SELECTED)\nExecutable miniRT has descended upon the world...$(END)                     "
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)

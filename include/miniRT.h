@@ -33,6 +33,14 @@ typedef struct s_vec
 
 }			t_vec;
 
+typedef struct	s_matrix
+{
+	double	x[3];
+	double	y[3];
+	double	z[3];
+
+}				t_matrix;
+
 typedef struct	s_ray
 {
 	double	t_max;
@@ -121,5 +129,8 @@ t_inter	cylindre_touch(t_ray ray, t_shape cylindre);
 //Colours
 int	ft_shading(t_inter inter, t_shape sphere, t_shape light);
 int	create_trgb(int t, int r, int g, int b);
+
+//Translation Matrix
+t_vec	transform(t_vec vec);
 
 #endif

@@ -13,17 +13,22 @@ int		color(t_data *img, int i, int j)
 	dir = normalized(dir);
 	ft_init_ray(&ray, zero_v(), dir);
 
+//	printf("Before: dir.x: %f dir.y: %f dir.z: %f\n", dir.x, dir.y, dir.z);
+	ray.dir = transform(dir);
+//	printf("TRANSFORM: dir.x: %f dir.y: %f dir.z: %f\n", dir.x, dir.y, dir.z);
+
 	inter = cylindre_touch(ray, img->sphere);
 	if (inter.hit)
+		//return (ft_shading(inter, inter.object, img->ligth));
 		return (0x00FFFFFF);
-//	inter = sphere_touch(ray, img->sphere);
-	
 
-	/*if (inter.hit == false)
+	/*
+	inter = sphere_touch(ray, img->sphere);
+	if (inter.hit == false)
 		inter = plane_touch(ray, img->plane);
 	if (inter.hit)
 		return (ft_shading(inter, inter.object, img->ligth));
-		*/
+	*/
 	return (0x000000);
 }
 
